@@ -1,5 +1,5 @@
 # Java基础语法：#
-1
+
 #目录#
 
 一.标识符和关键字 
@@ -230,6 +230,7 @@ public void addLast(E):将指定的元素插入此列表的结尾；
 
 public  void push(E):将元素推入此列表所表示的堆栈；
 
+public E pop():从此列表所表示的堆栈中弹出一个元素；
 
 public E getFirst():返回此列表的第一个元素；
 
@@ -248,24 +249,24 @@ public boolean isEmpty():此列表是否为空；
 
 #Set
 特点：无序而且不重复(不重复的功能需要依赖 hashCode 与 equals 方法的重写）
-常用实现类：
+#常用实现类：
 
 HashSet(不是按照存储顺序保存的，具有不确定性)
 
 TreeSet(按照自然顺序保存)
 
-LinkedHashSet(按照用户储存的顺序储存)
+LinkedHashSet(按照用户储存的顺序储存,继承于Hashset);
 
-Set常用方法
-和List 一致(见上文）
+HashSet常用方法
+和ArrayList 一致(见上文）
 
 #Map
-特点：无序、以键值对的形式添加元素，键不能重复，值可以重复
+特点：无序、以键值对的形式添加元素，键不能重复，值可以重复,成对元素唯一；
 
-常用实现类
-HashMap
+#常用实现类
+HashMap:查询速度很快，但是成对元素存放进去没有顺序；
 
-LinkedMap
+LinkedHashMap（继承于HashMap)，:查询速度很快，成对元素存放进去有序；
 
 #常用方法
 Object put(Object key,Object value) : 向map中添加键值对 
@@ -290,30 +291,6 @@ Set entrySet(): 返回map中的键值对映射(key=value),以Set集合形式返�
 
 V remove(Object key) : 根据key删除指定映射关系,返回value值
 
-#Queue
-概念；queue翻译为队列，是一个先进先出的容器
-
-常用方法：
-获取并且移除：
-
-poll() 　　获取并移除此队列的头，如果此队列为空，则返回 null
-
-remove()　　获取并移除此队列的头，如果此队列为空，则抛出NoSuchElementException异常
-
-获取但是不移除：
-
-peek()　　获取队列的头但不移除此队列的头。如果此队列为空，则返回 null
-
-添加元素：
-
-offer()　向有界队列中添加元素的时候，如果元素的数量超过临界值，会添加失败，但不会抛出异常
-
-add()　　向有界队列中添加元素的时候，如果元素的数量超过临界值，会抛出异常
-
-判断对列是否为空：
-
-isEmpty()    判断一个队列中是否为空
-
 
 #Collections工具类
 常用方法：
@@ -324,7 +301,7 @@ max(element)：取当前集合的最大值；
 
 Reverse（element）：逆序排序，对当前集合的元素按照相反的顺序进行排序;
 
-.Shuffle（element）：将当前集合内的数据进行随机排序
+Shuffle（element）：将当前集合内的数据进行随机排序
 
 
 
@@ -339,7 +316,7 @@ Reverse（element）：逆序排序，对当前集合的元素按照相反的顺
 
 1. 通过try...catch语句块来处理：
 
-手动处理：
+捕获：
 
 try{
   // 程序代码
@@ -353,10 +330,67 @@ try{
 
 抛出：
 
-通过throws/throw到上层进行处理
+通过throws/throw到上层进行处理使用捕获
+
+多个异常使用捕获如何处理：
+
+1.多个异常分别处理；
+
+2.多个异常一次捕获，多次处理
+
+3.多个异常一次捕获一次处理；
+
+
+
+
 
 
 #多线程
+概念：一个进程中出现了多个线程；
+
+常用方法:
+
+ public void start():开启进程;
+
+public void getName():获取当前线程名称；
+
+public  static void sleep:使当前正在执行的线程以指定的毫秒数暂停；
+
+public static Thread currentThread():返回对当前正在执行的线程对象的引用；
+
+构造方法：
+
+public Thread:分配一个新的线程对象；
+
+public Thread(String name):分配一个指定名字的新的线程对象；
+
+public Thread(Runnable target):分配一个带有指定目标的新的线程对象；
+
+public Thread(Runnable target,String name):分配一个带有指定目标新的线程对象并指定名字
+
+创建多线程的常用方式：实现Runnable接口；
+实现步骤:
+
+1创建一个Runnable接口的实现类
+
+2在实现类中重写Runnable接口的run方法，设置线程任务；
+
+3创建一个Runnable接口的实现类对象；
+
+4创建Thread类对象，构造方法中传递Runnable接口的实现类对象；
+
+5调用ThreadL类中的start方法，开启新的线程执行run方法；
+
+
+
+
+
+
+
+
+
+
+
 
 
 
